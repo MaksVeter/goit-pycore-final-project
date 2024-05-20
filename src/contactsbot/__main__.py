@@ -1,4 +1,6 @@
-from contacts_bot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook,save_data,load_data
+from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, show_birthday
+from .helpers import parse_input
+from .stateManager import save_data, load_data
 
 
 def main():
@@ -32,7 +34,7 @@ def main():
                 print(get_all(book))
             else:
                 print("Invalid command.")
-        
+
         save_data(book)
     except KeyboardInterrupt:
         print("\nProgram interrupted by user. Exiting...")
