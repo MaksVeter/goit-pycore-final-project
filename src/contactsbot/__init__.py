@@ -1,4 +1,4 @@
-from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, show_birthday, delete_contact
+from .bookOperations import add_contact, add_address, add_phone, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, change_address, show_birthday, delete_contact
 from .helpers import parse_input
 from .AddressBook import AddressBook
 from .stateManager import save_data,load_data
