@@ -45,8 +45,7 @@ class Record:
         self.birthday = birthday_obj
 
     def __str__(self) -> str:
-        res = f"Contact name: {self.name.value}, phones: {
-            '; '.join(p.value for p in self.phones)}"
+        res = f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
         if (self.birthday):
             res += f", birthday: {str(self.birthday)}"
         return res

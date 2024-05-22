@@ -95,8 +95,7 @@ def get_upcoming_birthdays(book: AddressBook):
         res += 'There is no upcoming birthdays'
     else:
         for item in birthdays:
-            res += f"Contact name: {item['name']}, Congratulation date: {
-                item['congratulation_date']}"
+            res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}"
     return res
 
 
