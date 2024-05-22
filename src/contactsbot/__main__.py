@@ -1,5 +1,5 @@
 #Тимчасово не звертайте уваги на цей файл
-from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, show_birthday
+from .bookOperations import add_contact, add_phone, add_address, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, change_address, show_birthday
 from .helpers import parse_input
 from .stateManager import save_data, load_data
 

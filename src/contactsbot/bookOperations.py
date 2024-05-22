@@ -34,7 +34,6 @@ def add_phone(args, book: AddressBook):
     record.add_phone(phone)
     return "Contact updated. Phone added."
 
-
 @input_error_catch
 @require_n_args(3)
 @name_min_length
@@ -46,6 +45,29 @@ def change_phone(args, book: AddressBook):
     record.edit_phone(old_phone, new_phone)
     return "Contact updated. Phone Updated."
 
+@input_error_catch
+@require_n_args(2)
+@name_min_length
+def add_address(args, book: AddressBook):
+    name, address = args
+    if (not (name and address)):
+        raise ValueError('Name and phone shouldn\'t be empty')
+
+    record = book.find(name)
+    record.add_address(address)
+    return "Contact updated. Address added."
+
+@input_error_catch
+@require_n_args(2)
+@name_min_length
+def change_address(args, book: AddressBook):
+    name, address = args
+    if (not (name and address)):
+        raise ValueError('Name and phone shouldn\'t be empty')
+
+    record = book.find(name)
+    record.edit_address(address)
+    return "Contact updated. Address Updated."
 
 @input_error_catch
 @require_n_args(2)
