@@ -37,7 +37,7 @@ def main():
                 print_with_color(show_birthday(args, book), 'yellow')
             elif command == "birthdays":
                 # print(get_upcoming_birthdays(book))
-                print_with_color(get_upcoming_birthdays(book), 'yellow')
+                print_with_color(get_upcoming_birthdays(args, book), 'yellow')
             elif command == "all":
                 # print(get_all(book))
                 print_with_color(get_all(book), 'yellow')
