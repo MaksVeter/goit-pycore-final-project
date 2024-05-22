@@ -44,6 +44,7 @@ def main():
             elif command == "help":
                 # print(get_help())
                 print_with_color(get_help(), 'yellow')
+
             else:
                 print_with_color("Invalid command.", 'yellow')
 
