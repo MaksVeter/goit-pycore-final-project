@@ -1,4 +1,4 @@
-from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, load_data
+from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, get_upcoming_birthdays, get_all, show_birthday, change_phone, delete_contact, save_data, load_data
 
 def main():
     book = load_data()
@@ -29,6 +29,8 @@ def main():
                 print(get_upcoming_birthdays(book))
             elif command == "all":
                 print(get_all(book))
+            elif command == "delete":
+                print(delete_contact(args,book))
             else:
                 print("Invalid command.")
 

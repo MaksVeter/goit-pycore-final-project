@@ -103,3 +103,18 @@ def get_upcoming_birthdays(book: AddressBook):
 @input_error_catch
 def get_all(book: AddressBook):
     return str(book)
+
+
+@input_error_catch
+def delete_contact(args, book: AddressBook):
+    if (len(args) != 1):
+        raise ValueError('Operation Requires 1 arg: name')
+    name = args[0]
+    if (not name):
+        raise ValueError('Name shouldn\'t be empty')
+    try:
+        book.delete(name)
+    except KeyError:
+        return "Contact doesn't exist."
+
+    return "Contact deleted."
