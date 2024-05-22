@@ -1,8 +1,4 @@
-#Тимчасово не звертайте уваги на цей файл
-from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, show_birthday
-from .helpers import parse_input
-from .stateManager import save_data, load_data
-
+from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, load_data
 
 def main():
     book = load_data()
