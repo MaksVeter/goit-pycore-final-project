@@ -101,8 +101,13 @@ def get_upcoming_birthdays(args, book: AddressBook):
     if (not birthdays):
         res += 'There is no upcoming birthdays'
     else:
+        i = 0
         for item in birthdays:
-            res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}"
+            if i < len(birthdays) -1:
+                res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}\n"
+            else:
+                res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}"
+            i+=1
     return res
 
 
