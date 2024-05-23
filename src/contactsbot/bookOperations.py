@@ -129,3 +129,23 @@ def delete_contact(args, book: AddressBook):
         return "Contact doesn't exist."
 
     return "Contact deleted."
+
+
+@input_error_catch
+def search_contact(args, book: AddressBook):
+    if (len(args) != 1):
+        raise ValueError('Operation Requires 1 arg: name')
+    name = args[0]
+    found = None
+    not_found = "Contacts not found."
+    if (not name):
+        raise ValueError('Name shouldn\'t be empty')
+    try:
+        found = book.find_like(name)
+    except KeyError:
+        return not_found
+
+    if(found):
+        return "\n".join(str(item) for key,item in found.items())
+    
+    return not_found

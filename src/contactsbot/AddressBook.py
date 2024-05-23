@@ -1,5 +1,6 @@
 from collections import UserDict
 from datetime import datetime, timedelta
+import re
 from typing import Union
 from .Record import Record
 
@@ -16,6 +17,14 @@ class AddressBook(UserDict):
             return self.data[name]
         else:
             raise KeyError(f'Record with name "{name}" is not exist')
+        
+    def find_like(self, search_term: str) -> Record:
+        pattern = re.compile(search_term, re.IGNORECASE)
+        matches = {key: value for key, value in self.data.items() if pattern.search(key)}
+        if (matches):
+            return matches
+        else:
+            raise KeyError(f'Record with name "{search_term}" is not exist')
 
     def delete(self, name: str):
         if (self.__exists(name)):
