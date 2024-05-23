@@ -1,6 +1,6 @@
 from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, \
     get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, \
-    load_data, show_banner, show_menu, get_help, print_with_color
+    load_data, show_banner, show_menu, get_help, print_with_color, delete_contact
 
 def main():
 
@@ -41,6 +41,8 @@ def main():
             elif command == "all":
                 # print(get_all(book))
                 print_with_color(get_all(book), 'yellow')
+            elif command == "delete":
+                print_with_color(delete_contact(args, book), 'yellow')
             elif command == "help":
                 # print(get_help())
                 print_with_color(get_help(), 'yellow')
