@@ -28,20 +28,20 @@ class AddressBook(UserDict):
 
 
     @staticmethod
-    def check_potential_congrats_date(date: datetime, now: datetime) -> Union[datetime, None]:
+    def check_potential_congrats_date(date: datetime, now: datetime, days) -> Union[datetime, None]:
         congratulation_date = None
         # check if date is weekend and move it to next monday
         if date.weekday() > 4:
             date = date + timedelta(days=(7-date.weekday()))
 
         # check if date is in 7 days range from today
-        if (0 <= (date-now).days < 7):
+        if (0 <= (date-now).days < days):
             congratulation_date = date
 
         return congratulation_date
 
     # @todo update
-    def get_upcoming_birthdays(self) -> list:
+    def get_upcoming_birthdays(self, days=7) -> list:        
         now_date = datetime.today()
         format = "%d.%m.%Y"
         res = []
@@ -54,7 +54,7 @@ class AddressBook(UserDict):
                     user_potential_congrat_date = user_birth_date.replace(
                         year=(now_date.year+case))
                     congratulation_date = AddressBook.check_potential_congrats_date(
-                        user_potential_congrat_date, now_date)
+                        user_potential_congrat_date, now_date, days)
                     if (congratulation_date):
                         break
 

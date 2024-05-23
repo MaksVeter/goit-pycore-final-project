@@ -88,14 +88,26 @@ def get_contact_phones(args, book: AddressBook):
 
 
 @input_error_catch
-def get_upcoming_birthdays(book: AddressBook):
-    birthdays = book.get_upcoming_birthdays()
+def get_upcoming_birthdays(args, book: AddressBook):
+    if (len(args) != 1):
+        raise ValueError('Operation Requires 1 arg: days')
+    try:        
+        days = int(args[0])
+    except ValueError:
+        raise ValueError("Error: the number of days should be integer, please enter another value")
+    
+    birthdays = book.get_upcoming_birthdays(days)
     res = ''
     if (not birthdays):
         res += 'There is no upcoming birthdays'
     else:
+        i = 0
         for item in birthdays:
-            res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}"
+            if i < len(birthdays) -1:
+                res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}\n"
+            else:
+                res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}"
+            i+=1
     return res
 
 
