@@ -1,5 +1,6 @@
 from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, \
-    get_upcoming_birthdays, change_phone, show_birthday, delete_contact, search_contact
+    get_upcoming_birthdays, change_phone, show_birthday, delete_contact, search_contact, \
+    add_email, change_email, get_contact_emails
 from .notesOperations import note_add_handler, note_show_handler
 from .helpers import parse_input, show_banner, print_with_color, show_menu, get_help
 from .AddressBook import AddressBook
@@ -11,12 +12,15 @@ __all__ = [
     'show_menu',
     'get_help', 
     'add_contact', 
-    'add_phone', 
+    'add_phone',
+    'add_email',
     'add_birthday', 
     'get_upcoming_birthdays', 
     'show_birthday', 
     'change_phone',
-    'get_contact_phones', 
+    'change_email',
+    'get_contact_phones',
+    'get_contact_emails',
     'get_all', 
     'AddressBook',
     'save_data',

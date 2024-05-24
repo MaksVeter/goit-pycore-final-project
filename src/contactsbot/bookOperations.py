@@ -46,6 +46,29 @@ def change_phone(args, book: AddressBook):
     record.edit_phone(old_phone, new_phone)
     return "Contact updated. Phone Updated."
 
+@input_error_catch
+@require_n_args(2)
+@name_min_length
+def add_email(args, book: AddressBook):
+    name, email = args
+    if (not (name and email)):
+        raise ValueError('Name and email shouldn\'t be empty')
+
+    record = book.find(name)
+    record.add_email(email)
+    return "Contact updated. Email added."
+
+
+@input_error_catch
+@require_n_args(3)
+@name_min_length
+def change_email(args, book: AddressBook):
+    name, old_email, new_email = args
+    if (not (name and old_email and new_email)):
+        raise ValueError('Name , old email and new email shouldn\'t be empty')
+    record = book.find(name)
+    record.edit_email(old_email, new_email)
+    return "Contact updated. Email Updated."
 
 @input_error_catch
 @require_n_args(2)
@@ -86,6 +109,17 @@ def get_contact_phones(args, book: AddressBook):
 
     return '; '.join(str(phone) for phone in record.phones)
 
+@input_error_catch
+def get_contact_emails(args, book: AddressBook):
+    if (len(args) != 1):
+        raise ValueError('Operation Requires 1 arg: name')
+    name = args[0]
+    if (not name):
+        raise ValueError('Name shouldn\'t be empty')
+
+    record = book.find(name)
+
+    return '; '.join(str(email) for email in record.emails)
 
 @input_error_catch
 def get_upcoming_birthdays(args, book: AddressBook):
