@@ -1,11 +1,14 @@
 #Тимчасово не звертайте уваги на цей файл
 from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, show_birthday
+from .notesOperations import note_add_hendler, note_show_handler
 from .helpers import parse_input
 from .stateManager import save_data, load_data
 
 
 def main():
     book = load_data()
+    note = load_data('notes.pkl')
+
     print("Welcome to the assistant bot!")
     try:
         while True:
@@ -33,13 +36,20 @@ def main():
                 print(get_upcoming_birthdays(book))
             elif command == "all":
                 print(get_all(book))
+            elif command == "note-add":
+                print(note_add_handler(note))
+            elif command == "note-show":
+                print(note_show_handler(note))
             else:
                 print("Invalid command.")
 
         save_data(book)
+        save_data(note, 'notes.pkl')
+
     except KeyboardInterrupt:
         print("\nProgram interrupted by user. Exiting...")
         save_data(book)
+        save_data(note, 'notes.pkl')
 
 
 if __name__ == "__main__":

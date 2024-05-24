@@ -1,10 +1,11 @@
 import pickle
 from .AddressBook import AddressBook
+from .Notes import Notes
 
 
-def save_data(book, filename="addressbook.pkl"):
+def save_data(data, filename="addressbook.pkl"):
     with open(filename, "wb") as f:
-        pickle.dump(book, f)
+        pickle.dump(data, f)
 
 
 def load_data(filename="addressbook.pkl"):
@@ -12,4 +13,7 @@ def load_data(filename="addressbook.pkl"):
         with open(filename, "rb") as f:
             return pickle.load(f)
     except FileNotFoundError:
-        return AddressBook()  
+        if filename == 'addressbook.pkl':
+            return AddressBook()
+        else:
+            return Notes()
