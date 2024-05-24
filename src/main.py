@@ -1,7 +1,8 @@
 from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, \
     get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, \
     load_data, show_banner, show_menu, get_help, print_with_color, note_add_handler, \
-    note_show_handler, delete_contact, search_contact, add_address, change_address
+    note_show_handler, delete_contact, search_contact, add_address, change_address, \
+    add_email, change_email, get_contact_emails
 
 def main():
 
@@ -31,6 +32,15 @@ def main():
             elif command == "phone":
                 # print(get_contact_phones(args, book))
                 print_with_color(get_contact_phones(args, book), 'yellow')
+            elif command == "add-email":
+                # print(add_phone(args, book))
+                print_with_color(add_email(args, book), 'yellow')
+            elif command == "change-email":
+                # print(change_phone(args, book))
+                print_with_color(change_email(args, book), 'yellow')
+            elif command == "email":
+                # print(get_contact_phones(args, book))
+                print_with_color(get_contact_emails(args, book), 'yellow')
             elif command == "add-birthday":
                 # print(add_birthday(args, book))
                 print_with_color(add_birthday(args, book), 'yellow')

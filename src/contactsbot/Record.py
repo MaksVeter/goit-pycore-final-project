@@ -3,7 +3,7 @@ from .Name import Name
 from .Phone import Phone
 from .Birthday import Birthday
 from .Address import Address
-
+from .Email import Email
 
 class Record:
     def __init__(self, name):
@@ -11,6 +11,7 @@ class Record:
         self.phones = []
         self.birthday = None
         self.address = None
+        self.emails = []
 
     def add_phone(self, phone: str):
         if (not self.find_phone(phone)):
@@ -41,6 +42,36 @@ class Record:
             old_phone_obj.update_value(new_phone)
         else:
             raise KeyError(f'This Phone {old_phone} is not exist')
+        
+    def add_email(self, email: str):
+        if (not self.find_email(email)):
+            email = Email(email)
+            self.emails.append(email)
+        else:
+            raise KeyError(f'This Email {email} is already exist')
+
+    def remove_email(self, email: str):
+        if (self.find_email(email)):
+            for i, email_obj in enumerate(self.emails):
+                if (email_obj.value == email):
+                    del self.emails[i]
+                    break
+        else:
+            raise KeyError(f'This Email {email} is not exist')
+
+    def find_email(self, email: str) -> Union[Email, None]:
+        for email_obj in self.emails:
+            if (email_obj.value == email):
+                return email_obj
+        return None
+
+    def edit_email(self, old_email: str, new_email: str):
+
+        old_email_obj = self.find_email(old_email)
+        if (old_email_obj):
+            old_email_obj.update_value(new_email)
+        else:
+            raise KeyError(f'This Email {old_email} is not exist')
 
     def add_birthday(self, birthday: str):
         birthday_obj = Birthday(birthday)
@@ -65,6 +96,7 @@ class Record:
             res += f", birthday: {str(self.birthday)}"
         if (self.address):
             res += f", address: {str(self.address)}"   
-            # res += f", address: {' '.join(p.value for p in self.address)}"
-            
+            # res += f", address: {' '.join(p.value for p in self.address)}"            
+        if (self.emails):
+            res += f", emails: {'; '.join(p.value for p in self.emails)}"
         return res
