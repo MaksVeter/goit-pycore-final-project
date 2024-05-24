@@ -15,7 +15,7 @@ def note_add_handler(note: Notes):
 def note_show_handler(note: Notes):
     """ show all notes """
     if len(note) <= 0:
-        print_with_color('Notes is empty', 'yellow')
+        print_with_color('Notes are empty', 'yellow')
     for id, text in note.data.items():
-        print_with_color(f"id: {id},\nNote text: {text}\n", 'yellow')
+        print_with_color(f"ID: {id},\nNote text: {text}\n", 'yellow')
     return True

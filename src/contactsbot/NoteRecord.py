@@ -14,4 +14,4 @@ class NoteRecord:
         self.note_text = NoteText(note_text)
 
     def __str__(self):
-        return f'{self.note_text}, {self.note_tag}'
+        return f'{self.note_text}'
