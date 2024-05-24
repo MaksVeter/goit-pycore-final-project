@@ -70,9 +70,10 @@ def show_menu():
     print_with_color("9.FGBS birthdays BESR show birthdays that will happen in the next week")
     print_with_color("10.FGBS add_email [contact_name] [email_number] BESR adds email of contact name")
     print_with_color("11.FGBS change_email [contact_name] [old_email_number] [new_email_number] BESR edits the contact's email")
-    print_with_color("12.FGBS note-add BESR add text note")
-    print_with_color("13.FGBS note-show BESR show all notes")
-    print_with_color("14.FGBS help BESR help page\n\n")
+    print_with_color("12.FGBS email [contact_name] BESR displays the contact's emails")
+    print_with_color("13.FGBS note-add BESR add text note")
+    print_with_color("14.FGBS note-show BESR show all notes")
+    print_with_color("15.FGBS help BESR help page\n\n")
 
 
 def get_help():
@@ -95,7 +96,8 @@ def get_help():
         show-birthday [name]                         display day of birth
         birthdays                                    show birthdays that will happen in the next week
         add_email [name] [email]                     add email of contact name
-        change_email [name] [old_email] [new_email]  edits the contact's email 
+        change_email [name] [old_email] [new_email]  edits the contact's email
+        email [name]                                 displays the contact's emails 
         note-add                                     add note
         note-show                                    show all notes\n\n
     """

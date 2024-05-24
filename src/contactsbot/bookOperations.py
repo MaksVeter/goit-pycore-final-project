@@ -118,8 +118,11 @@ def get_contact_emails(args, book: AddressBook):
         raise ValueError('Name shouldn\'t be empty')
 
     record = book.find(name)
-
-    return '; '.join(str(email) for email in record.emails)
+    
+    if (record.emails == []):
+        return "Contact doesn't have emails"
+    else:
+        return '; '.join(str(email) for email in record.emails)
 
 @input_error_catch
 def get_upcoming_birthdays(args, book: AddressBook):
