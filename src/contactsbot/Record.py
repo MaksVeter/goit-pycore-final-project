@@ -2,6 +2,7 @@ from typing import Union
 from .Name import Name
 from .Phone import Phone
 from .Birthday import Birthday
+from .Address import Address
 
 
 class Record:
@@ -9,6 +10,7 @@ class Record:
         self.name = Name(name)
         self.phones = []
         self.birthday = None
+        self.address = None
 
     def add_phone(self, phone: str):
         if (not self.find_phone(phone)):
@@ -43,9 +45,26 @@ class Record:
     def add_birthday(self, birthday: str):
         birthday_obj = Birthday(birthday)
         self.birthday = birthday_obj
+        
+    def add_address(self, address: str):
+        if (self.address == None):
+            address_obj = Address(address)
+            self.address = address_obj
+        else:
+            raise KeyError(f'This Record already has address')
+        # address_obj = Address(address)
+        # self.address = address_obj
+    
+    def edit_address(self, address: str):
+        address_obj = Address(address)
+        self.address = address_obj
 
     def __str__(self) -> str:
         res = f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
         if (self.birthday):
             res += f", birthday: {str(self.birthday)}"
+        if (self.address):
+            res += f", address: {str(self.address)}"   
+            # res += f", address: {' '.join(p.value for p in self.address)}"
+            
         return res
