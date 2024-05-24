@@ -47,8 +47,13 @@ class Record:
         self.birthday = birthday_obj
         
     def add_address(self, address: str):
-        address_obj = Address(address)
-        self.address = address_obj
+        if (self.address == None):
+            address_obj = Address(address)
+            self.address = address_obj
+        else:
+            raise KeyError(f'This Record already has address')
+        # address_obj = Address(address)
+        # self.address = address_obj
     
     def edit_address(self, address: str):
         address_obj = Address(address)
@@ -60,5 +65,7 @@ class Record:
         if (self.birthday):
             res += f", birthday: {str(self.birthday)}"
         if (self.address):
-            res += f", address: {self.address.value}"
+            res += f", address: {str(self.address)}"   
+            # res += f", address: {' '.join(p.value for p in self.address)}"
+            
         return res

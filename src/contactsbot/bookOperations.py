@@ -1,4 +1,4 @@
-from .decorators import input_error_catch, require_n_args, name_min_length
+from .decorators import input_error_catch, require_n_args, name_min_length, require_more_eq_n_args
 from .Record import Record
 from .AddressBook import AddressBook
 
@@ -46,10 +46,11 @@ def change_phone(args, book: AddressBook):
     return "Contact updated. Phone Updated."
 
 @input_error_catch
-@require_n_args(2)
+@require_more_eq_n_args(4)
 @name_min_length
 def add_address(args, book: AddressBook):
-    name, address = args
+    name, *address = args
+    address = ' '.join(address)
     if (not (name and address)):
         raise ValueError('Name and phone shouldn\'t be empty')
 
@@ -58,10 +59,11 @@ def add_address(args, book: AddressBook):
     return "Contact updated. Address added."
 
 @input_error_catch
-@require_n_args(2)
+@require_more_eq_n_args(4)
 @name_min_length
 def change_address(args, book: AddressBook):
-    name, address = args
+    name, *address = args
+    address = ' '.join(address)
     if (not (name and address)):
         raise ValueError('Name and phone shouldn\'t be empty')
 

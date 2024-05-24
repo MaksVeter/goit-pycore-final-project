@@ -8,10 +8,10 @@ class Address(Field):
         if (self.__validate_address(value)):
             super().__init__(value)
         else:
-            raise ValueError('Address string should contain symbols and digits')
+            raise ValueError('Address string should contain from 10 to 150 symbols')
 
     def __validate_address(self, value: str) -> bool:
-        return bool(re.match(r"(?P<text>[a-zA-Z]+)(?P<digits>\d+)", value))
+        return bool(re.match(r'^.{10,150}$', value))
 
     def update_value(self, value: str):
         if (value == self.value):
@@ -19,4 +19,4 @@ class Address(Field):
         if (self.__validate_address(value)):
             self.value = value
         else:
-            raise ValueError('Address string should contain symbols and digits')
+            raise ValueError('Address string should contain minimum 3 words')
