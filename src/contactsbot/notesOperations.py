@@ -9,7 +9,7 @@ def note_add_handler(note: Notes):
     print_with_color('Please enter a note text : ', 'yellow')
     note_text = input()
     note.note_add(NoteRecord(note_text))
-    return "note added"
+    return "Note added"
 
 
 def note_show_handler(note: Notes):
