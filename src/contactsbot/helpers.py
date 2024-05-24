@@ -67,7 +67,10 @@ def show_menu():
     print_with_color("6.FGBS close BESR or FGBS exit BESR exit from the assistant")
     print_with_color("7.FGBS add-birthday [contact_name] [day_of_birthday] BESR add birthday of contact name")
     print_with_color("8.FGBS show-birthday [contact_name] BESR display day of birth")
-    print_with_color("9.FGBS birthdays BESR show birthdays that will happen in the next week\n\n")
+    print_with_color("9.FGBS birthdays BESR show birthdays that will happen in the next week")
+    print_with_color("10.FGBS note-add BESR add text note")
+    print_with_color("11.FGBS note-show BESR show all notes")
+    print_with_color("12.FGBS help BESR help page\n\n")
 
 
 def get_help():
@@ -88,5 +91,7 @@ def get_help():
         exit                                    exit from the assistant
         add-birthday [name] [birthday]          add birthday of contact name
         show-birthday [name]                    display day of birth
-        birthdays                               show birthdays that will happen in the next week\n\n
+        birthdays                               show birthdays that will happen in the next week
+        note-add                                add note
+        note-show                               show all notes\n\n
     """
