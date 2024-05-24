@@ -1,10 +1,12 @@
 from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, \
     get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, \
-    load_data, show_banner, show_menu, get_help, print_with_color, delete_contact, search_contact
+    load_data, show_banner, show_menu, get_help, print_with_color, note_add_handler, \
+    note_show_handler, delete_contact, search_contact
 
 def main():
 
     book = load_data()
+    note = load_data('notes.pkl')
     try:
         while True:
             user_input = input("Enter a command: ")
@@ -48,13 +50,20 @@ def main():
             elif command == "help":
                 # print(get_help())
                 print_with_color(get_help(), 'yellow')
+            elif command == "note-add":
+                print_with_color(note_add_handler(note), 'yellow')
+            elif command == "note-show":
+                note_show_handler(note)
             else:
                 print_with_color("Invalid command.", 'yellow')
 
         save_data(book)
+        save_data(note, 'notes.pkl')
+
     except KeyboardInterrupt:
         print("\nProgram interrupted by user. Exiting...")
         save_data(book)
+        save_data(note, 'notes.pkl')
 
 
 if __name__ == "__main__":
