@@ -25,6 +25,16 @@ def require_n_args(n):
         return inner
     return decorator
 
+def require_more_eq_n_args(n):
+    def decorator(func):
+        @wraps(func)
+        def inner(args, contacts):
+            if (len(args) < n):
+                raise ValueError(f'Operation Requires {n} or more args')
+            return func(args, contacts)
+
+        return inner
+    return decorator
 
 def name_min_length(func):
     @wraps(func)

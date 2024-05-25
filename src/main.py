@@ -4,6 +4,7 @@ from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_c
     note_show_handler, note_change_handler, note_delete_handler, note_delete_all_handler, \
     note_search_handler, delete_contact, search_contact
 
+
 def main():
 
     book = load_data()
@@ -32,6 +33,15 @@ def main():
             elif command == "phone":
                 # print(get_contact_phones(args, book))
                 print_with_color(get_contact_phones(args, book), 'yellow')
+            elif command == "add-email":
+                # print(add_phone(args, book))
+                print_with_color(add_email(args, book), 'yellow')
+            elif command == "change-email":
+                # print(change_phone(args, book))
+                print_with_color(change_email(args, book), 'yellow')
+            elif command == "email":
+                # print(get_contact_phones(args, book))
+                print_with_color(get_contact_emails(args, book), 'yellow')
             elif command == "add-birthday":
                 # print(add_birthday(args, book))
                 print_with_color(add_birthday(args, book), 'yellow')
@@ -41,6 +51,12 @@ def main():
             elif command == "birthdays":
                 # print(get_upcoming_birthdays(book))
                 print_with_color(get_upcoming_birthdays(args, book), 'yellow')
+            elif command == "add-address":
+                print_with_color(add_address(args, book),'yellow')
+                # print(add_address(args, book))
+            elif command == "change-address":
+                print_with_color(change_address(args, book), 'yellow')
+                # print(change_address(args, book))
             elif command == "all":
                 # print(get_all(book))
                 print_with_color(get_all(book), 'yellow')
