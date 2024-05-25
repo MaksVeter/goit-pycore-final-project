@@ -1,7 +1,8 @@
 from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, \
     get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, \
     load_data, show_banner, show_menu, get_help, print_with_color, note_add_handler, \
-    note_show_handler, delete_contact, search_contact
+    note_show_handler, note_change_handler, note_delete_handler, note_delete_all_handler, \
+    note_search_handler, delete_contact, search_contact
 
 def main():
 
@@ -54,6 +55,14 @@ def main():
                 print_with_color(note_add_handler(note), 'yellow')
             elif command == "note-show":
                 note_show_handler(note)
+            elif command == "note-change":
+                print_with_color(note_change_handler(args, note), 'yellow')
+            elif command == "note-delete":
+                print_with_color(note_delete_handler(args, note), 'yellow')
+            elif command == "note-delete-all":
+                print_with_color(note_delete_all_handler(note), 'yellow')
+            elif command == "note-search":
+                print_with_color(note_search_handler(args, note), 'yellow')
             else:
                 print_with_color("Invalid command.", 'yellow')
 

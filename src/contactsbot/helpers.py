@@ -70,7 +70,11 @@ def show_menu():
     print_with_color("9.FGBS birthdays BESR show birthdays that will happen in the next week")
     print_with_color("10.FGBS note-add BESR add text note")
     print_with_color("11.FGBS note-show BESR show all notes")
-    print_with_color("12.FGBS help BESR help page\n\n")
+    print_with_color("12.FGBS note-change BESR change note by ID")
+    print_with_color("13.FGBS note-delete BESR delete note by ID")
+    print_with_color("13.FGBS note-delete-all BESR delete note by ID")
+    print_with_color("14.FGBS note-search BESR search in all notes")
+    print_with_color("15.FGBS help BESR help page\n\n")
 
 
 def get_help():
@@ -82,16 +86,21 @@ def get_help():
         contactsbot [command] [values]
 
     Commands:
-        hello                                   say hello to the assistant
-        add [name] [phone]                      add contact name and phone number to the memory
-        change [name] [old_phone] [new_phone]   edits the contact's phone number
-        phone [name]                            displays the contact's phone number
-        all                                     show contacts phone book
-        close                                   exit from the assistant
-        exit                                    exit from the assistant
-        add-birthday [name] [birthday]          add birthday of contact name
-        show-birthday [name]                    display day of birth
-        birthdays                               show birthdays that will happen in the next week
-        note-add                                add note
-        note-show                               show all notes\n\n
+        hello                                   Say hello to the assistant
+        add [name] [phone]                      Add contact name and phone number to the memory
+        change [name] [old_phone] [new_phone]   Edits the contact's phone number
+        phone [name]                            Displays the contact's phone number
+        all                                     Show contacts phone book
+        close                                   Exit from the assistant
+        exit                                    Exit from the assistant
+        add-birthday [name] [birthday]          Add birthday of contact name
+        show-birthday [name]                    Display day of birth
+        birthdays                               Show birthdays that will happen in the next week
+        note-add                                Add note
+        note-show                               Show all notes
+        note-change                             Chenge note by ID
+        note-delete                             Delete note by ID
+        note-delete-all                         Delete all notes
+        note-search                             Search in all notes
+        help                                    Show help page
     """

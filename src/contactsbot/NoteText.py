@@ -33,4 +33,4 @@ class NoteText(Field):
 
 
     def __str__(self):
-        return self.value
+        return f'{self.value}'
