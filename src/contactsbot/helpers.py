@@ -56,7 +56,7 @@ def show_banner():
 
 
 def get_commands():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
+    current_dir = os.path.dirname(__file__)
     file_path = os.path.join(current_dir, 'commands.txt')
     rows = None
 

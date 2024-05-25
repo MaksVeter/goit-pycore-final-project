@@ -7,7 +7,10 @@ from .stateManager import save_data, load_data
 
 
 def main():
-
+    # show banner
+    show_banner()
+    # show menu
+    show_menu()
     book = load_data()
     note = load_data('notes.pkl')
     try:
@@ -96,8 +99,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # show banner
-    show_banner()
-    # show menu
-    show_menu()
     main()
