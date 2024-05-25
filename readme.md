@@ -13,7 +13,7 @@
 
   
 
-Цей проект реалізує консольного бота на Python, який дозволяє керувати контактами та нотатками. Ви можете додавати, редагувати, видаляти контакти (з телефонами, адресою, електронною поштою) а також створювати, редагувати, видаляти, шукати текстові нотатки.
+Цей проект реалізує консольного бота на Python, який дозволяє керувати контактами та нотатками. Ви можете додавати, редагувати, видаляти контакти (з телефонами, адресою, електронною поштою) а також створювати, редагувати, видаляти, шукати текстові нотатки. Стан контактів та нотаток зберігається між запусками бота у поточній директорії.
 
   
 
@@ -40,75 +40,66 @@
   
 
   
-
-### Встановлення та запуск
-
-  
-
-  
-
+### Встановлення та запуск як пакет
 1. Клонуйте репозиторій:
 
-  
-
 ```bash
-
-  
-
 git clone  https://github.com/MaksVeter/goit-pycore-final-project
-
-  
-
 ```
-
-  
-
-  
 
 2. Перейдіть у директорію проекту:
 
-  
-
 ```bash
-
-  
-
 cd goit-pycore-final-project
-
-  
-
 ```
 
-  
+3. Ініціюйте та активуйте Venv
+```bash
+python3 -m venv .venv
+# активація в залежності від ОС
+source .venv/bin/activate # для Mac
+.\.venv\Scripts\activate.bat # для Windows CMD
+.\.venv\Scripts\Activate.ps1 # для Windows PowerShell
+```
 
-  
+4. Встановіть пакет
+
+```bash
+pip install -e .
+```
+
+5. Бот буде доступний за командою
+
+```bash
+contactsbot
+```
+
+
+
+### Встановлення та запуск як модуль
+
+1. Клонуйте репозиторій:
+
+```bash
+git clone  https://github.com/MaksVeter/goit-pycore-final-project
+```
+
+2. Перейдіть у директорію проекту:
+
+```bash
+cd goit-pycore-final-project
+```
 
 3. Встановіть необхідні бібліотеки:
 
-  
-
 ```bash
-
-  
-
 pip install  -r  requirements.txt
-
-  
-
 ```
 
 4. Запустіть бота:
 
-  
-
 ```bash
-
-  
-
-python src/main.py
-
-  
-
+python3 src/main.py
 ```
 
   
@@ -122,14 +113,11 @@ python src/main.py
   
 
 ```bash
-
-  
-
 List of commands
 1.  hello  say hello to the assistant
 2.  add [contact_name] [phone_number]  adds contact name and phone number to memory
-3.  change [contact_name] [old_phone_number] [new_phone_number]  edits the contacts phone number
-4.  phone [contact_name]  displays the contacts phone number
+3.  change [contact_name] [old_phone_number] [new_phone_number]  edits the contact's phone number
+4.  phone [contact_name]  displays the contact(\')s phone number
 5.  all  show contacts phone book
 6.  search [search_term]  search contacts by name
 7.  delete [contact_name]  delete contact by name
@@ -138,10 +126,10 @@ List of commands
 10. show-birthday [contact_name]  display day of birth
 11. birthdays  show birthdays that will happen in the next week
 12. add-email [contact_name] [email]  adds email of contact name
-13. change-email [contact_name] [old_email] [new_email]  edits the contacts email
-14. email [contact_name]  displays the contacts emails
+13. change-email [contact_name] [old_email] [new_email]  edits the contact's email
+14. email [contact_name]  displays the contact's emails
 15. add-address [contact_name] [address]  adds address of contact name
-16. change-address [contact_name] [new_address]  edits the contacts address
+16. change-address [contact_name] [new_address]  edits the contact's address
 17. note-add  add text note
 18. note-show  show all notes
 19. note-change [note_id]  change note by ID
