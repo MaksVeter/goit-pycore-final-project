@@ -1,9 +1,10 @@
-from .decorators import input_error_catch, require_n_args, name_min_length
+from .decorators import input_error_catch, require_n_args
 from .NoteRecord import NoteRecord
 from .Notes import Notes
 from .helpers import print_with_color
 
 
+@input_error_catch
 def note_add_handler(note: Notes):
     """ note add hendler """
     print_with_color('Please enter a note text : ', 'yellow')
@@ -12,6 +13,7 @@ def note_add_handler(note: Notes):
     return "Note added"
 
 
+@input_error_catch
 def note_show_handler(note: Notes):
     """ show all notes """
     if len(note) <= 0:
@@ -21,6 +23,8 @@ def note_show_handler(note: Notes):
     return True
 
 
+@input_error_catch
+@require_n_args(1)
 def note_change_handler(args, note: Notes):
     """ change notes by id """
     note_id, *_ = args
@@ -37,6 +41,8 @@ def note_change_handler(args, note: Notes):
     return 'Note is updated'
 
 
+@input_error_catch
+@require_n_args(1)
 def note_delete_handler(args, note: Notes):
     """ delete note by ID """
     note_id, *_ = args
@@ -60,7 +66,8 @@ def note_delete_all_handler(note: Notes):
     else:
         return "Ok, it's not (y), but you're a joker, you're scaring me here"
 
-
+@input_error_catch
+@require_n_args(1)
 def note_search_handler(args, note: Notes):
     """ Search """
     return 'Not implenebted yet'
