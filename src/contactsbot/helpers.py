@@ -91,21 +91,26 @@ def get_help():
         contactsbot [command] [values]
 
     Commands:
-        hello                                   Say hello to the assistant
-        add [name] [phone]                      Add contact name and phone number to the memory
-        change [name] [old_phone] [new_phone]   Edits the contact's phone number
-        phone [name]                            Displays the contact's phone number
-        all                                     Show contacts phone book
-        close                                   Exit from the assistant
-        exit                                    Exit from the assistant
-        add-birthday [name] [birthday]          Add birthday of contact name
-        show-birthday [name]                    Display day of birth
-        birthdays                               Show birthdays that will happen in the next week
-        note-add                                Add note
-        note-show                               Show all notes
-        note-change                             Chenge note by ID
-        note-delete                             Delete note by ID
-        note-delete-all                         Delete all notes
-        note-search                             Search in all notes
-        help                                    Show help page
+        hello                                        Say hello to the assistant
+        add [name] [phone]                           Add contact name and phone number to the memory
+        change [name] [old_phone] [new_phone]        Edits the contact's phone number
+        phone [name]                                 Displays the contact's phone number
+        all                                          Show contacts phone book
+        close                                        Exit from the assistant
+        exit                                         Exit from the assistant
+        add-birthday [name] [birthday]               Add birthday of contact name
+        show-birthday [name]                         Display day of birth
+        birthdays                                    Show birthdays that will happen in the next week
+        add-email [name] [email]                     add email of contact name
+        change-email [name] [old_email] [new_email]  edits the contact's email
+        email [name]                                 displays the contact's emails
+        add-address                                  adds address of contact name
+        change-address                               edits the contact's address
+        note-add                                     Add note
+        note-show                                    Show all notes
+        note-change                                  Chenge note by ID
+        note-delete                                  Delete note by ID
+        note-delete-all                              Delete all notes
+        note-search                                  Search in all notes
+        help                                         Show help page
     """
