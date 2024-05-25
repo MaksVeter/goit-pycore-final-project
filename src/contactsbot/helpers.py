@@ -1,3 +1,4 @@
+import os
 from colorama import Fore, Style
 
 def parse_input(user_input):
@@ -54,32 +55,31 @@ def show_banner():
     print(Fore.GREEN + baner + Style.RESET_ALL)
 
 
+def get_commands():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, 'commands.txt')
+    rows = None
+
+    def load_rows():
+        nonlocal rows
+        if rows is None:
+            with open(file_path, 'r') as file:
+                rows = [row.strip() for row in file.readlines()]
+        return rows
+
+    return load_rows
+
 
 def show_menu():
     """ print preview menu """
     print("Welcome to the assistant bot!\n\n")
     print("List of commands")
-    print_with_color("1.FGBS hello BESR say hello to the assistant")
-    print_with_color("2.FGBS add [contact_name] [phone_number] BESR adds contact name and phone number to memory")
-    print_with_color("3.FGBS change [contact_name] [old_phone_number] [new_phone_number] BESR edits the contact's phone number")
-    print_with_color("4.FGBS phone [contact_name] BESR displays the contact's phone number")
-    print_with_color("5.FGBS all BESR show contacts phone book")
-    print_with_color("6.FGBS close BESR or FGBS exit BESR exit from the assistant")
-    print_with_color("7.FGBS add-birthday [contact_name] [day_of_birthday] BESR add birthday of contact name")
-    print_with_color("8.FGBS show-birthday [contact_name] BESR display day of birth")
-    print_with_color("9.FGBS birthdays BESR show birthdays that will happen in the next week")
-    print_with_color("10.FGBS add-email [contact_name] [email] BESR adds email of contact name")
-    print_with_color("11.FGBS change-email [contact_name] [old_email] [new_email] BESR edits the contact's email")
-    print_with_color("12.FGBS email [contact_name] BESR displays the contact's emails")
-    print_with_color("13.FGBS add-address [contact_name] [address] BESR adds address of contact name")
-    print_with_color("14.FGBS change-address [contact_name] [old_address] [new_address] BESR edits the contact's address")
-    print_with_color("15.FGBS note-add BESR add text note")
-    print_with_color("16.FGBS note-show BESR show all notes")
-    print_with_color("17.FGBS note-change BESR change note by ID")
-    print_with_color("18.FGBS note-delete BESR delete note by ID")
-    print_with_color("19.FGBS note-delete-all BESR delete note by ID")
-    print_with_color("20.FGBS note-search BESR search in all notes")
-    print_with_color("21.FGBS help BESR help page\n\n")
+    load_rows = get_commands()
+    rows = load_rows() 
+    for i in range(len(rows)):
+        index_str = f"{i+1}."
+        print_with_color(f"{index_str:<3}FGBS {rows[i]}")
+
 
 
 def get_help():
@@ -91,21 +91,28 @@ def get_help():
         contactsbot [command] [values]
 
     Commands:
-        hello                                   Say hello to the assistant
-        add [name] [phone]                      Add contact name and phone number to the memory
-        change [name] [old_phone] [new_phone]   Edits the contact's phone number
-        phone [name]                            Displays the contact's phone number
-        all                                     Show contacts phone book
-        close                                   Exit from the assistant
-        exit                                    Exit from the assistant
-        add-birthday [name] [birthday]          Add birthday of contact name
-        show-birthday [name]                    Display day of birth
-        birthdays                               Show birthdays that will happen in the next week
-        note-add                                Add note
-        note-show                               Show all notes
-        note-change                             Chenge note by ID
-        note-delete                             Delete note by ID
-        note-delete-all                         Delete all notes
-        note-search                             Search in all notes
-        help                                    Show help page
+        hello                                        Say hello to the assistant
+        add [name] [phone]                           Add contact name and phone number to the memory
+        change [name] [old_phone] [new_phone]        Edits the contact's phone number
+        phone [name]                                 Displays the contact's phone number
+        all                                          Show contacts phone book
+        search [search_term]                         Search contacts by name
+        delete [name]                                Delete contact by name
+        close                                        Exit from the assistant
+        exit                                         Exit from the assistant
+        add-birthday [name] [birthday]               Add birthday of contact name
+        show-birthday [name]                         Display day of birth
+        birthdays                                    Show birthdays that will happen in the next week
+        add-email [name] [email]                     Adds email of contact name
+        change-email [name] [old_email] [new_email]  Edits the contact's email
+        email [name]                                 Show contacts emails
+        add-address [name] [addrress]                Add address of contact name
+        change-address [name] [new_address]          Change address of contact name
+        note-add                                     Add note
+        note-show                                    Show all notes
+        note-change [note_id]                        Change note by ID
+        note-delete [note_id]                        Delete note by ID
+        note-delete-all                              Delete all notes
+        note-search [search_term]                    Search in all notes by text
+        help                                         Show help page
     """
