@@ -128,8 +128,8 @@ python src/main.py
 List of commands
 1.  hello  say hello to the assistant
 2.  add [contact_name] [phone_number]  adds contact name and phone number to memory
-3.  change [contact_name] [old_phone_number] [new_phone_number]  edits the contact's phone number
-4.  phone [contact_name]  displays the contact(\')s phone number
+3.  change [contact_name] [old_phone_number] [new_phone_number]  edits the contacts phone number
+4.  phone [contact_name]  displays the contacts phone number
 5.  all  show contacts phone book
 6.  search [search_term]  search contacts by name
 7.  delete [contact_name]  delete contact by name
@@ -138,10 +138,10 @@ List of commands
 10. show-birthday [contact_name]  display day of birth
 11. birthdays  show birthdays that will happen in the next week
 12. add-email [contact_name] [email]  adds email of contact name
-13. change-email [contact_name] [old_email] [new_email]  edits the contact's email
-14. email [contact_name]  displays the contact's emails
+13. change-email [contact_name] [old_email] [new_email]  edits the contacts email
+14. email [contact_name]  displays the contacts emails
 15. add-address [contact_name] [address]  adds address of contact name
-16. change-address [contact_name] [new_address]  edits the contact's address
+16. change-address [contact_name] [new_address]  edits the contacts address
 17. note-add  add text note
 18. note-show  show all notes
 19. note-change [note_id]  change note by ID
