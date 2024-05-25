@@ -1,0 +1,23 @@
+hello BESR say hello to the assistant
+add [contact_name] [phone_number] BESR adds contact name and phone number to memory
+change [contact_name] [old_phone_number] [new_phone_number] BESR edits the contact's phone number
+phone [contact_name] BESR displays the contact's phone number
+all BESR show contacts phone book
+search [search_term] BESR search contacts by name
+delete [contact_name] BESR delete contact by name
+close BESR or FGBS exit BESR exit from the assistant
+add-birthday [contact_name] [day_of_birthday] BESR add birthday of contact name
+show-birthday [contact_name] BESR display day of birth
+birthdays BESR show birthdays that will happen in the next week
+add-email [contact_name] [email] BESR adds email of contact name
+change-email [contact_name] [old_email] [new_email] BESR edits the contact's email
+email [contact_name] BESR displays the contact's emails
+add-address [contact_name] [address] BESR adds address of contact name
+change-address [contact_name] [new_address] BESR edits the contact's address
+note-add BESR add text note
+note-show BESR show all notes
+note-change [note_id] BESR change note by ID
+note-delete [note_id] BESR delete note by ID
+note-delete-all BESR delete note by ID
+note-search [search_term] BESR search in all notes
+help BESR help page
