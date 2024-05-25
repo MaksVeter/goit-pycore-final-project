@@ -1,6 +1,8 @@
 #Тимчасово не звертайте уваги на цей файл
-from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, get_upcoming_birthdays, change_phone, show_birthday
-from .notesOperations import note_add_handler, note_show_handler, note_change_handler, note_delete_handler, note_delete_all_handler, note_search_handler
+from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, \
+    get_upcoming_birthdays, change_phone, show_birthday
+from .notesOperations import note_add_handler, note_show_handler, note_change_handler, note_delete_handler, \
+    note_delete_all_handler, note_search_handler
 from .helpers import parse_input
 from .stateManager import save_data, load_data
 

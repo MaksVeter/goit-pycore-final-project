@@ -2,7 +2,8 @@ from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_c
     get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, \
     load_data, show_banner, show_menu, get_help, print_with_color, note_add_handler, \
     note_show_handler, note_change_handler, note_delete_handler, note_delete_all_handler, \
-    note_search_handler, delete_contact, search_contact
+    note_search_handler, delete_contact, search_contact, add_email, change_email, get_contact_emails, \
+    add_address, change_address
 
 
 def main():

@@ -1,6 +1,6 @@
 from .bookOperations import add_contact, add_phone, get_contact_phones, get_all, add_birthday, \
     get_upcoming_birthdays, change_phone, show_birthday, delete_contact, search_contact, add_email, \
-    change_email, get_contact_emails
+    change_email, get_contact_emails, add_address, change_address
 from .notesOperations import note_add_handler, note_show_handler, note_change_handler, note_delete_handler, \
     note_delete_all_handler, note_search_handler
 from .helpers import parse_input, show_banner, print_with_color, show_menu, get_help
@@ -33,6 +33,7 @@ __all__ = [
     'note_change_handler',
     'note_delete_handler',
     'note_delete_all_handler',
-    'note_search_handler'
+    'note_search_handler',
+    'add_address',
+    'change_address'
     ]
-
