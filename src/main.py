@@ -13,6 +13,9 @@ def main():
     try:
         while True:
             user_input = input("Enter a command: ")
+            if(not user_input):
+                print_with_color("Invalid command.", 'yellow')
+                continue
             command, *args = parse_input(user_input)
 
             if command in ["close", "exit"]:
