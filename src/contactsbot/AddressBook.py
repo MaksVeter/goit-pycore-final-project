@@ -14,8 +14,7 @@ class AddressBook(UserDict):
         if (not self.__exists(record.name)):
             self.data[record.name.value] = record
         else:
-            raise KeyError(f'Record with name "{
-                           record.name}" is already exist')
+            raise KeyError(f'Record with name "{record.name}" is already exist')
 
     def find(self, name: str) -> Record:
         """Find the record by name method"""
