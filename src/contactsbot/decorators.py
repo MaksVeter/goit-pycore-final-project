@@ -29,8 +29,11 @@ def require_more_eq_n_args(n):
     def decorator(func):
         @wraps(func)
         def inner(args, contacts):
-            if (len(args) < n):
-                raise ValueError(f'Operation Requires {n} or more args')
+            if (len(args) < 2):
+                raise ValueError(f'Operation Requires 2 args')
+            elif (len(args) < 4):
+                raise ValueError(f'Address must consist of at least 3 parts')
+            
             return func(args, contacts)
 
         return inner
