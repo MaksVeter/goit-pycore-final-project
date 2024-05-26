@@ -15,9 +15,9 @@ class Notes(UserDict):
             # get last key and add 1
             last_key = max(self.data.keys())
             return last_key+1
-        else:
-            # then we have empty storage, set 1
-            return 1
+        
+        # then we have empty storage, set 1
+        return 1
 
     def note_add(self, note_record: NoteRecord, note_id=0):
         """ add note """
