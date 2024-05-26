@@ -28,6 +28,7 @@ def require_n_args(n):
         return inner
     return decorator
 
+
 def require_more_eq_n_args(n):
     """check amount of args decorator"""
     def decorator(func):
@@ -37,11 +38,12 @@ def require_more_eq_n_args(n):
                 raise ValueError('Operation Requires 2 args')
             elif len(args) < 4:
                 raise ValueError('Address must consist of at least 3 parts')
-            
+
             return func(args, contacts)
 
         return inner
     return decorator
+
 
 def name_min_length(func):
     """check name min length decorator"""
