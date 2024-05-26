@@ -85,7 +85,7 @@ def main():
             elif command == "note-delete-all":
                 print_with_color(note_delete_all_handler(note), 'yellow')
             elif command == "note-search":
-                print_with_color(note_search_handler(args, note), 'yellow')
+                note_search_handler(args, note)
             else:
                 print_with_color("Invalid command.", 'yellow')
 

@@ -69,7 +69,6 @@ def main():
             elif command == "search":
                 print_with_color(search_contact(args, book), 'yellow')
             elif command == "help":
-                # print(get_help())
                 print_with_color(get_help(), 'yellow')
             elif command == "note-add":
                 print_with_color(note_add_handler(note), 'yellow')
@@ -82,7 +81,7 @@ def main():
             elif command == "note-delete-all":
                 print_with_color(note_delete_all_handler(note), 'yellow')
             elif command == "note-search":
-                print_with_color(note_search_handler(args, note), 'yellow')
+                note_search_handler(args, note)
             else:
                 print_with_color("Invalid command.", 'yellow')
 

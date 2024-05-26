@@ -61,13 +61,29 @@ def note_delete_all_handler(note: Notes):
     print_with_color('Are you sure, please confirn y/n', 'yellow')
     ansver = input()
     if ansver and ansver.lower() == 'y':
-        note.note_delete_all()
+        note.note_delete_all(),
         return 'All notes was deleted'
     else:
         return "Ok, it's not (y), but you're a joker, you're scaring me here"
 
-@input_error_catch
-@require_n_args(1)
+
 def note_search_handler(args, note: Notes):
     """ Search """
-    return 'Not implenebted yet'
+    
+    if len(args) < 1:
+        print_with_color('Operation Requires 1 or more args', 'red')
+        return 0
+
+    criteria, *_ = args
+    counter = 0
+    if len(note) > 0:
+        for key, item in note.data.items():
+            if note.note_search(item.note_text.value, criteria):
+                print_with_color('\nSearch result:\n', 'yellow')
+                print_with_color(f'ID: {key}', 'yellow')
+                print_with_color(f'{item.note_text.value}\n', 'yellow')
+                counter += 1
+        if not counter:
+            print_with_color('No data for searching.', 'yellow')
+    else:
+        print_with_color('No data for searching', 'yellow')

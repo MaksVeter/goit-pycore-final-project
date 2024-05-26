@@ -28,6 +28,8 @@ def print_with_color(data: str, color: str = 'green'):
     
     if color == 'yellow':
         print(Fore.YELLOW + data + Style.RESET_ALL)
+    elif color == 'red':
+        print(Fore.RED + data + Style.RESET_ALL)
     else:
         use_color = Fore.GREEN
         # parsing text string

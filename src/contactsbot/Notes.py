@@ -1,6 +1,6 @@
 from collections import UserDict
 from datetime import datetime, timedelta
-from .NoteRecord import NoteRecord
+from .NoteRecord import NoteRecord, NoteText
 
 
 class Notes(UserDict):
@@ -59,9 +59,9 @@ class Notes(UserDict):
         return True
 
 
-    def note_search(self, s: str):
+    def note_search(self, s: str, criteria: str):
         """ Search """
-        pass
+        return s.find(criteria) != -1
 
 
     def __str__(self) -> str:
