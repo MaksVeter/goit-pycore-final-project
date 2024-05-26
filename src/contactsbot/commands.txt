@@ -15,7 +15,7 @@ email [contact_name] BESR displays the contact's emails
 add-address [contact_name] [address] BESR adds address of contact name
 change-address [contact_name] [new_address] BESR edits the contact's address
 note-add BESR add text note
-note-show BESR show all notes
+note-all BESR show all notes
 note-change [note_id] BESR change note by ID
 note-delete [note_id] BESR delete note by ID
 note-delete-all BESR delete note by ID

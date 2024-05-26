@@ -14,23 +14,20 @@ class NoteText(Field):
             super().__init__(value)
             self.value = value
         else:
-            raise ValueError('err 1')
+            raise ValueError('The note must contain at least 2 and no more than 2000 characters')
 
 
     def __validate_note_text(self, value: str) -> bool:
         """ validation """
-        return True
-
-
-    def update_value(self, value: str):
-        """ update note text """
-        if value == self.value:
-            raise ValueError('err 2')
-        if self.__validate_note_text(value):
-            self.value = value
-        else:
-            raise ValueError('err 3')
+        return len(value) > 2 and len(value) < 2000
 
 
     def __str__(self):
+        """ string presentation """
         return f'{self.value}'
+    
+
+    def __len__(self):
+        """ lenght """
+        return len(self.value)
+    

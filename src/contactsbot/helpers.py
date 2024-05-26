@@ -1,7 +1,8 @@
 import os
-from colorama import Fore, Style
+from colorama import Fore, Style, Back
 
 def parse_input(user_input):
+    """ parse input data """
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
@@ -26,8 +27,17 @@ def print_with_color(data: str, color: str = 'green'):
 
     # color case
     
-    if color == 'yellow':
+    # errors (raise exception)
+    if data.find('rror:') != -1:
+        print(Fore.RED + data + Style.RESET_ALL)
+    # bot ansvers, result of commands
+    elif color == 'yellow':
         print(Fore.YELLOW + data + Style.RESET_ALL)
+    elif color == 'back-black':
+        print(Back.LIGHTBLACK_EX + data + Style.RESET_ALL)
+    elif color == 'back-gray':
+        print(Back.BLACK + data + Style.RESET_ALL)
+    # error predefined
     elif color == 'red':
         print(Fore.RED + data + Style.RESET_ALL)
     else:
@@ -58,6 +68,7 @@ def show_banner():
 
 
 def get_commands():
+    """ get bot command """
     current_dir = os.path.dirname(__file__)
     file_path = os.path.join(current_dir, 'commands.txt')
     rows = None
@@ -111,7 +122,7 @@ def get_help():
         add-address [name] [addrress]                Add address of contact name
         change-address [name] [new_address]          Change address of contact name
         note-add                                     Add note
-        note-show                                    Show all notes
+        note-all                                     Show all notes
         note-change [note_id]                        Change note by ID
         note-delete [note_id]                        Delete note by ID
         note-delete-all                              Delete all notes

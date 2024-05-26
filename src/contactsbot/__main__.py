@@ -1,6 +1,6 @@
 from .bookOperations import add_address, add_contact, add_email, add_phone, change_address, change_email, delete_contact, get_contact_emails, get_contact_phones, get_all, add_birthday, \
     get_upcoming_birthdays, change_phone, search_contact, show_birthday
-from .notesOperations import note_add_handler, note_show_handler, note_change_handler, note_delete_handler, \
+from .notesOperations import note_add_handler, note_all_handler, note_change_handler, note_delete_handler, \
     note_delete_all_handler, note_search_handler
 from .helpers import get_help, parse_input, print_with_color, show_banner, show_menu
 from .stateManager import save_data, load_data
@@ -76,8 +76,8 @@ def main():
                 print_with_color(get_help(), 'yellow')
             elif command == "note-add":
                 print_with_color(note_add_handler(note), 'yellow')
-            elif command == "note-show":
-                note_show_handler(note)
+            elif command == "note-all":
+                note_all_handler(note)
             elif command == "note-change":
                 print_with_color(note_change_handler(args, note), 'yellow')
             elif command == "note-delete":
@@ -93,7 +93,7 @@ def main():
         save_data(note, 'notes.pkl')
 
     except KeyboardInterrupt:
-        print("\nProgram interrupted by user. Exiting...")
+        print_with_color("\nProgram interrupted by user. Exiting...", 'red')
         save_data(book)
         save_data(note, 'notes.pkl')
 

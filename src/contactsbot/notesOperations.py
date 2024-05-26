@@ -1,5 +1,5 @@
 from .decorators import input_error_catch, require_n_args
-from .NoteRecord import NoteRecord
+from .NoteRecord import NoteRecord, NoteText
 from .Notes import Notes
 from .helpers import print_with_color
 
@@ -9,17 +9,20 @@ def note_add_handler(note: Notes):
     """ note add hendler """
     print_with_color('Please enter a note text : ', 'yellow')
     note_text = input()
-    note.note_add(NoteRecord(note_text))
+    note.note_add(NoteRecord(NoteText(note_text)))
     return "Note added"
 
 
 @input_error_catch
-def note_show_handler(note: Notes):
+def note_all_handler(note: Notes):
     """ show all notes """
+    print_with_color('List of notes :\n', 'yellow')
     if len(note) <= 0:
         print_with_color('Notes are empty', 'yellow')
-    for id, text in note.data.items():
-        print_with_color(f"ID: {id},\nNote text: {text}\n", 'yellow')
+    for key, text in note.data.items():
+        print(f"Note:{key}")
+        print_with_color(f"{text}", 'back-black')
+        print('\n')
     return True
 
 
@@ -69,17 +72,15 @@ def note_delete_all_handler(note: Notes):
 
 def note_search_handler(args, note: Notes):
     """ Search """
-    
     if len(args) < 1:
         print_with_color('Operation Requires 1 or more args', 'red')
         return 0
-
     criteria, *_ = args
     counter = 0
     if len(note) > 0:
+        print_with_color('\nSearch result:\n', 'yellow')
         for key, item in note.data.items():
             if note.note_search(item.note_text.value, criteria):
-                print_with_color('\nSearch result:\n', 'yellow')
                 print_with_color(f'ID: {key}', 'yellow')
                 print_with_color(f'{item.note_text.value}\n', 'yellow')
                 counter += 1

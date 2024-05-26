@@ -1,7 +1,7 @@
 from contactsbot import parse_input, add_contact, add_phone, add_birthday, get_contact_phones, \
     get_upcoming_birthdays, get_all, show_birthday, change_phone, AddressBook, save_data, \
     load_data, show_banner, show_menu, get_help, print_with_color, note_add_handler, \
-    note_show_handler, note_change_handler, note_delete_handler, note_delete_all_handler, \
+    note_all_handler, note_change_handler, note_delete_handler, note_delete_all_handler, \
     note_search_handler, delete_contact, search_contact, add_email, change_email, get_contact_emails, \
     add_address, change_address
 
@@ -12,9 +12,9 @@ def main():
     note = load_data('notes.pkl')
     try:
         while True:
-            user_input = input("Enter a command: ")
+            user_input = input("\nEnter a command: ")
             if(not user_input):
-                print_with_color("Invalid command.", 'yellow')
+                print_with_color("Invalid command.", 'red')
                 continue
             command, *args = parse_input(user_input)
 
@@ -72,8 +72,8 @@ def main():
                 print_with_color(get_help(), 'yellow')
             elif command == "note-add":
                 print_with_color(note_add_handler(note), 'yellow')
-            elif command == "note-show":
-                note_show_handler(note)
+            elif command == "note-all":
+                note_all_handler(note)
             elif command == "note-change":
                 print_with_color(note_change_handler(args, note), 'yellow')
             elif command == "note-delete":
@@ -83,13 +83,13 @@ def main():
             elif command == "note-search":
                 note_search_handler(args, note)
             else:
-                print_with_color("Invalid command.", 'yellow')
+                print_with_color("Invalid command.", 'red')
 
         save_data(book)
         save_data(note, 'notes.pkl')
 
     except KeyboardInterrupt:
-        print("\nProgram interrupted by user. Exiting...")
+        print_with_color("\nProgram interrupted by user. Exiting...", 'red')
         save_data(book)
         save_data(note, 'notes.pkl')
 

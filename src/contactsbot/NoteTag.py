@@ -13,19 +13,18 @@ class NoteTag(Field):
         if self.__validate_note_tag(value):
             super().__init__(value)
         else:
-            raise ValueError('err 11')
+            raise ValueError('The tag must contain at least 2 and no more than 15 characters')
 
 
     def __validate_note_tag(self, value: str) -> bool:
         """ validation """
-        return True
+        return len(value) > 2 and len(value) < 15
+    
+    def __str__(self):
+        """ string presentation """
+        return f'{self.value}'
+    
 
-
-    def update_value(self, value: str):
-        """ update note text """
-        if value == self.value:
-            raise ValueError('err 22')
-        if self.__validate_note_tag(value):
-            self.value = value
-        else:
-            raise ValueError('err 33')
+    def __len__(self):
+        """ lenght """
+        return len(self.value)
