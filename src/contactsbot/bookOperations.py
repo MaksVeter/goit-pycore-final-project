@@ -1,3 +1,4 @@
+"""Set of user input handlers"""
 from .decorators import input_error_catch, require_n_args, name_min_length, require_more_eq_n_args
 from .Record import Record
 from .AddressBook import AddressBook
@@ -7,13 +8,14 @@ from .AddressBook import AddressBook
 @require_n_args(2)
 @name_min_length
 def add_contact(args, book: AddressBook):
+    """add new contact handler"""
     name, phone = args
-    if (not (name and phone)):
+    if not (name and phone):
         raise ValueError('Name and phone shouldn\'t be empty')
     message = "Contact updated."
     try:
         record = book.find(name)
-    except:
+    except KeyError:
         message = "Contact added."
         record = Record(name)
         book.add_record(record)
@@ -26,45 +28,52 @@ def add_contact(args, book: AddressBook):
 @require_n_args(2)
 @name_min_length
 def add_phone(args, book: AddressBook):
+    """add new contact phone handler"""
     name, phone = args
-    if (not (name and phone)):
+    if not (name and phone):
         raise ValueError('Name and phone shouldn\'t be empty')
 
     record = book.find(name)
     record.add_phone(phone)
     return "Contact updated. Phone added."
 
+
 @input_error_catch
 @require_n_args(3)
 @name_min_length
 def change_phone(args, book: AddressBook):
+    """change contact phone handler"""
     name, old_phone, new_phone = args
-    if (not (name and old_phone and new_phone)):
+    if not (name and old_phone and new_phone):
         raise ValueError('Name , old phone and new phone shouldn\'t be empty')
     record = book.find(name)
     record.edit_phone(old_phone, new_phone)
     return "Contact updated. Phone Updated."
 
+
 @input_error_catch
 @require_more_eq_n_args(4)
 @name_min_length
 def add_address(args, book: AddressBook):
+    """add new contact address handler"""
     name, *address = args
     address = ' '.join(address)
-    if (not (name and address)):
+    if not (name and address):
         raise ValueError('Name and phone shouldn\'t be empty')
 
     record = book.find(name)
     record.add_address(address)
     return "Contact updated. Address added."
 
+
 @input_error_catch
 @require_more_eq_n_args(4)
 @name_min_length
 def change_address(args, book: AddressBook):
+    """change contact address handler"""
     name, *address = args
     address = ' '.join(address)
-    if (not (name and address)):
+    if not (name and address):
         raise ValueError('Name and phone shouldn\'t be empty')
 
     record = book.find(name)
@@ -76,8 +85,9 @@ def change_address(args, book: AddressBook):
 @require_n_args(2)
 @name_min_length
 def add_email(args, book: AddressBook):
+    """add new contact email handler"""
     name, email = args
-    if (not (name and email)):
+    if not (name and email):
         raise ValueError('Name and email shouldn\'t be empty')
 
     record = book.find(name)
@@ -89,19 +99,22 @@ def add_email(args, book: AddressBook):
 @require_n_args(3)
 @name_min_length
 def change_email(args, book: AddressBook):
+    """change contact email handler"""
     name, old_email, new_email = args
-    if (not (name and old_email and new_email)):
+    if not (name and old_email and new_email):
         raise ValueError('Name , old email and new email shouldn\'t be empty')
     record = book.find(name)
     record.edit_email(old_email, new_email)
     return "Contact updated. Email Updated."
 
+
 @input_error_catch
 @require_n_args(2)
 @name_min_length
 def add_birthday(args, book: AddressBook):
+    """add contact birthday handler"""
     name, birthday = args
-    if (not (name and birthday)):
+    if not (name and birthday):
         raise ValueError('Name and phone shouldn\'t be empty')
 
     record = book.find(name)
@@ -112,53 +125,60 @@ def add_birthday(args, book: AddressBook):
 @input_error_catch
 @name_min_length
 def show_birthday(args, book: AddressBook):
-    if (len(args) != 1):
+    """display contact birthday handler"""
+    if len(args) != 1:
         raise ValueError('Operation Requires 1 arg: name')
     name = args[0]
 
     record = book.find(name)
-    if (record.birthday):
+    if record.birthday:
         return str(record.birthday)
-    else:
-        return 'Contact don\'t have birthday jet'
+
+    return 'Contact don\'t have birthday jet'
 
 
 @input_error_catch
 def get_contact_phones(args, book: AddressBook):
-    if (len(args) != 1):
+    """show contacts phones handler"""
+    if len(args) != 1:
         raise ValueError('Operation Requires 1 arg: name')
     name = args[0]
-    if (not name):
+    if not name:
         raise ValueError('Name shouldn\'t be empty')
 
     record = book.find(name)
 
     return '; '.join(str(phone) for phone in record.phones)
 
+
 @input_error_catch
 def get_contact_emails(args, book: AddressBook):
-    if (len(args) != 1):
+    """show contacts emails handler"""
+    if len(args) != 1:
         raise ValueError('Operation Requires 1 arg: name')
     name = args[0]
-    if (not name):
+    if not name:
         raise ValueError('Name shouldn\'t be empty')
 
     record = book.find(name)
-    
-    if (record.emails == []):
+
+    if record.emails == []:
         return "Contact doesn't have emails"
-    else:
-        return '; '.join(str(email) for email in record.emails)
+
+    return '; '.join(str(email) for email in record.emails)
+
 
 @input_error_catch
 def get_upcoming_birthdays(args, book: AddressBook):
+    """show contacts with birthday in days from now handler"""
     if (len(args) != 1):
         raise ValueError('Operation Requires 1 arg: days')
-    try:        
+    try:
         days = int(args[0])
     except ValueError:
-        raise ValueError("Error: the number of days should be integer, please enter another value")
-    
+        raise ValueError(  # pylint: disable=W0707
+            "Error: the number of days should be integer, please enter another value")  # pylint: disable=W0707
+
     birthdays = book.get_upcoming_birthdays(days)
     res = ''
     if (not birthdays):
@@ -166,25 +186,29 @@ def get_upcoming_birthdays(args, book: AddressBook):
     else:
         i = 0
         for item in birthdays:
-            if i < len(birthdays) -1:
-                res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}\n"
+            if i < len(birthdays) - 1:
+                res += f"Contact name: {item['name']}, Congratulation date: {
+                    item['congratulation_date']}\n"
             else:
-                res += f"Contact name: {item['name']}, Congratulation date: {item['congratulation_date']}"
-            i+=1
+                res += f"Contact name: {item['name']
+                                        }, Congratulation date: {item['congratulation_date']}"
+            i += 1
     return res
 
 
 @input_error_catch
 def get_all(book: AddressBook):
+    """show all contacts handler"""
     return str(book)
 
 
 @input_error_catch
 def delete_contact(args, book: AddressBook):
-    if (len(args) != 1):
+    """delete contact handler"""
+    if len(args) != 1:
         raise ValueError('Operation Requires 1 arg: name')
     name = args[0]
-    if (not name):
+    if not name:
         raise ValueError('Name shouldn\'t be empty')
     try:
         book.delete(name)
@@ -196,19 +220,20 @@ def delete_contact(args, book: AddressBook):
 
 @input_error_catch
 def search_contact(args, book: AddressBook):
-    if (len(args) != 1):
+    """search contacts handler"""
+    if len(args) != 1:
         raise ValueError('Operation Requires 1 arg: name')
     name = args[0]
     found = None
     not_found = "Contacts not found."
-    if (not name):
+    if not name:
         raise ValueError('Name shouldn\'t be empty')
     try:
         found = book.find_like(name)
     except KeyError:
         return not_found
 
-    if(found):
-        return "\n".join(str(item) for key,item in found.items())
-    
+    if found:
+        return "\n".join(str(item) for key, item in found.items())
+
     return not_found

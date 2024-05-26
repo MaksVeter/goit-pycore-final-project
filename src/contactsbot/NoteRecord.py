@@ -1,5 +1,5 @@
+"""Note Record main class"""
 from .NoteText import NoteText
-from .NoteTag import NoteTag
 
 
 class NoteRecord:

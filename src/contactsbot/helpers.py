@@ -1,12 +1,13 @@
+"""Helper functions"""
 import os
-from colorama import Fore, Style, Back
+from colorama import Fore, Style, Back  # type: ignore
+
 
 def parse_input(user_input):
     """ parse input data """
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
-
 
 
 def print_with_color(data: str, color: str = 'green'):
@@ -26,7 +27,6 @@ def print_with_color(data: str, color: str = 'green'):
     """
 
     # color case
-    
     # errors (raise exception)
     if data.find('rror:') != -1:
         print(Fore.RED + data + Style.RESET_ALL)
@@ -50,11 +50,8 @@ def print_with_color(data: str, color: str = 'green'):
         print(data)
 
 
-
-
 def show_banner():
     """ print banner """
-
 
     baner = r"""
    ____            _             _         ____        _   
@@ -76,7 +73,7 @@ def get_commands():
     def load_rows():
         nonlocal rows
         if rows is None:
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r', encoding='utf-8') as file:
                 rows = [row.strip() for row in file.readlines()]
         return rows
 
@@ -88,11 +85,10 @@ def show_menu():
     print("Welcome to the assistant bot!\n\n")
     print("List of commands")
     load_rows = get_commands()
-    rows = load_rows() 
+    rows = load_rows()
     for i in range(len(rows)):
         index_str = f"{i+1}."
         print_with_color(f"{index_str:<3}FGBS {rows[i]}")
-
 
 
 def get_help():
