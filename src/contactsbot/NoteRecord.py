@@ -1,3 +1,4 @@
+"""Note Record main class"""
 from .NoteText import NoteText
 
 

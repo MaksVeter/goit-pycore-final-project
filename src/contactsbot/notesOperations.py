@@ -1,3 +1,4 @@
+"""Set of user input handlers"""
 from .decorators import input_error_catch, require_n_args
 from .NoteRecord import NoteRecord, NoteText
 from .Notes import Notes
@@ -64,10 +65,9 @@ def note_delete_all_handler(note: Notes):
     print_with_color('Are you sure, please confirn y/n', 'yellow')
     ansver = input()
     if ansver and ansver.lower() == 'y':
-        note.note_delete_all(),
+        note.note_delete_all()
         return 'All notes was deleted'
-    else:
-        return "Ok, it's not (y), but you're a joker, you're scaring me here"
+    return "Ok, it's not (y), but you're a joker, you're scaring me here"
 
 
 def note_search_handler(args, note: Notes):
