@@ -102,13 +102,11 @@ class Record:
         self.address = address_obj
 
     def __str__(self) -> str:
-        res = f"Contact name: {self.name.value}, \n {
-            'phones:':<12} {'; '.join(p.value for p in self.phones)}"
+        res = f"Contact name: {self.name.value}, \n {'phones:':<12} {'; '.join(p.value for p in self.phones)}"
         if self.birthday:
             res += f", \n {'birthday:':<12} {str(self.birthday)}"
         if self.address:
             res += f", \n {'address:':<12} {str(self.address)}"
         if self.emails:
-            res += f", \n {'emails:':<12} {
-                '; '.join(p.value for p in self.emails)}"
+            res += f", \n {'emails:':<12} {'; '.join(p.value for p in self.emails)}"
         return res
