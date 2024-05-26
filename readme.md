@@ -117,7 +117,7 @@ List of commands
 1.  hello  say hello to the assistant
 2.  add [contact_name] [phone_number]  adds contact name and phone number to memory
 3.  change [contact_name] [old_phone_number] [new_phone_number]  edits the contact's phone number
-4.  phone [contact_name]  displays the contact(\')s phone number
+4.  phone [contact_name]  displays the contact's phone number
 5.  all  show contacts phone book
 6.  search [search_term]  search contacts by name
 7.  delete [contact_name]  delete contact by name
@@ -131,7 +131,7 @@ List of commands
 15. add-address [contact_name] [address]  adds address of contact name
 16. change-address [contact_name] [new_address]  edits the contact's address
 17. note-add  add text note
-18. note-show  show all notes
+18. note-all  show all notes
 19. note-change [note_id]  change note by ID
 20. note-delete [note_id]  delete note by ID
 21. note-delete-all  delete note by ID
