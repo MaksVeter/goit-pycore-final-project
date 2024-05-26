@@ -5,20 +5,8 @@ from .NoteRecord import NoteRecord, NoteText
 
 class Notes(UserDict):
     """
-
     Class Notes - this class can save notes data and has some functionals for notes
 
-    data = {
-        0: [
-            instance of NoteText
-            instance of NoteTag
-            instance of NoteDate - #todo
-        ],
-        1: [
-            intance of NoteText
-            ...
-        ...
-    }
     """
 
     def note_id_creator(self):
