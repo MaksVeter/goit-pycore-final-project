@@ -1,6 +1,7 @@
 """ modules import """
 from collections import UserDict
 from .NoteRecord import NoteRecord
+import re
 
 
 class Notes(UserDict):
@@ -41,9 +42,11 @@ class Notes(UserDict):
         self.data = {}
         return True
 
-    def note_search(self, s: str, criteria: str):
+    def note_search(self, s: str, search_term: str):
         """ Search """
-        return s.find(criteria) != -1
+        pattern = re.compile(search_term, re.IGNORECASE)
+        return pattern.search(str(s))
+
 
     def __str__(self) -> str:
         """ String """
